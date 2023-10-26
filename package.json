@@ -2,7 +2,7 @@
   "name": "vscode-mark-highlighter",
   "displayName": "Mark Highlighter",
   "description": "Highlight == (<mark> tag) in markdown files",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.83.0"
   },
@@ -35,7 +35,21 @@
   },
   "license": "MIT",
   "publisher": "dacodekid",
+  "main": "./extension.js",
   "contributes": {
+    "commands": [
+      {
+        "command": "mark.highlighter.wrapUnwrap",
+        "title": "Wrap/Unwrap with =="
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "mark.highlighter.wrapUnwrap",
+        "key": "ctrl+alt+cmd+=",
+        "when": "editorTextFocus && !editorReadonly && editorLangId =~ /^markdown$|^rmd$|^quarto$/"
+      }
+    ],
     "grammars": [
       {
         "scopeName": "source.markdown",

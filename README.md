@@ -8,6 +8,20 @@ An extension for VSCode that highlights the ==marked== text in your code editor.
 
 ## Extension Settings
 
+### Keybinding
+
+Default keybinding is `ctrl+alt+cmd+=`. You can change it by adding this to your `keybindings.json` file:
+
+```json
+{
+  "command": "mark.highlighter.wrapUnwrap",
+  "key": "YOUR OWN KEYBINDING",
+  "when": "editorTextFocus && !editorReadonly && editorLangId =~ /^markdown$|^rmd$|^quarto$/"
+}
+```
+
+### Theme Color
+
 Add this to your settings.json file:
 
 ```json
