@@ -1,0 +1,51 @@
+{
+  "name": "vscode-mark-highlighter",
+  "displayName": "Mark Highlighter",
+  "description": "Highlight == (<mark> tag) in markdown files",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.83.0"
+  },
+  "icon": "assets/logo.png",
+  "categories": [
+    "Programming Languages"
+  ],
+  "keywords": [
+    "markdown",
+    "highlight",
+    "highlighter",
+    "mark",
+    "mark tag",
+    "mark highlighter",
+    "mark highlight",
+    "mark tag highlight",
+    "==",
+    "double equal",
+    "double equal highlight",
+    "double equal mark",
+    "double equal mark highlight"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dacodekid/vscode-mark-highlighter.git"
+  },
+  "homepage": "https://github.com/dacodekid/vscode-mark-highlighter",
+  "bugs": {
+    "url": "https://github.com/dacodekid/vscode-mark-highlighter/issues"
+  },
+  "license": "MIT",
+  "contributes": {
+    "grammars": [
+      {
+        "scopeName": "source.markdown",
+        "path": "./syntaxes/injection.json",
+        "injectTo": [
+          "text.html.markdown"
+        ],
+        "embeddedLanguages": {
+          "markup.raw.marked.vscode.mark.highlighter": "markdown"
+        }
+      }
+    ]
+  }
+}

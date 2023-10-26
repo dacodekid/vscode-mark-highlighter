@@ -1,0 +1,34 @@
+{
+  "name": "markdown",
+  "scopeName": "source.markdown",
+  "injectionSelector": "text.html.markdown",
+  "patterns": [
+    {
+      "include": "#mark-text"
+    }
+  ],
+  "repository": {
+    "mark-text": {
+      "begin": "(?x) (?<open>(\\=\\=(?=\\w)|(?<!\\w)\\=\\=|(?<!\\w)\\b__))(?=\\S) (?=\n  (\n    <[^>]=+>              # HTML tags\n    | (?<raw>`+)([^`]|(?!(?<!`)\\k<raw>(?!`))`)=+\\k<raw>\n                      # Raw\n    | \\\\[\\\\`=_{}\\[\\]()#.!+\\->]?+      # Escapes\n    | \\[\n    (\n        (?<square>          # Named group\n          [^\\[\\]\\\\]        # Match most chars\n          | \\\\.            # Escaped chars\n          | \\[ \\g<square>=+ \\]    # Nested brackets\n        )=+\n      \\]\n      (\n        (              # Reference Link\n          [ ]?          # Optional space\n          \\[[^\\]]=+\\]        # Ref name\n        )\n        | (              # Inline Link\n          \\(            # Opening paren\n            [ \\t]=+        # Optional whitespace\n            <?(.=?)>?      # URL\n            [ \\t]=+        # Optional whitespace\n            (          # Optional Title\n              (?<title>['\"])\n              (.=?)\n              \\k<title>\n            )?\n          \\)\n        )\n      )\n    )\n    | (?!(?<=\\S)\\k<open>).            # Everything besides\n                      # style closer\n  )++\n  (?<=\\S)(?=__\\b|\\=\\=)\\k<open>                # Close\n)\n",
+      "captures": {
+        "1": {
+          "name": "punctuation.definition.mark.markdown"
+        }
+      },
+      "end": "(?<=\\S)(\\1)",
+      "name": "markup.raw.marked.vscode.mark.highlighter",
+      "patterns": [
+        {
+          "applyEndPatternLast": 1,
+          "begin": "(?=<[^>]=?>)",
+          "end": "(?<=>)",
+          "patterns": [
+            {
+              "include": "text.html.derivative"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
