@@ -34,6 +34,7 @@
     "url": "https://github.com/dacodekid/vscode-mark-highlighter/issues"
   },
   "license": "MIT",
+  "publisher": "dacodekid",
   "contributes": {
     "grammars": [
       {
